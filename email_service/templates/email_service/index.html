@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Integration</title>
+    <style>
+        #progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+
+        #progress {
+            height: 20px;
+            width: 0;
+            background-color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+<h1>Почтовая интеграция</h1>
+<div id="progress-bar">
+    <div id="progress"></div>
+</div>
+<table id="email-table">
+    <thead>
+    <tr>
+        <th>Тема</th>
+        <th>Дата отправки</th>
+        <th>Дата получения</th>
+        <th>Описание</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Data will be filled by JavaScript -->
+    </tbody>
+</table>
+
+<script>
+    const socket = new WebSocket('ws://localhost:8000/ws/email/');
+
+    socket.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        console.log(data);
+        // Здесь вы можете обновить таблицу по мере поступления сообщений
+    };
+
+    // Здесь вы можете реализовать логику обновления прогресс-бара
+</script>
+</body>
+</html>
+   
